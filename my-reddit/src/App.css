@@ -27,9 +27,15 @@ h2 {
   font-size: 1.3rem;
 }
 
+h3{
+  font-size: .8rem;
+}
+
 .post-container {
   border-bottom: 1px dotted lightgrey;
   padding: 1rem 0 1rem 5rem;
+  width: 50%;
+  margin: auto;
 }
 
 .postBy {
@@ -39,4 +45,14 @@ h2 {
 
 .author{
   color: dodgerblue;
+}
+
+.content{
+  margin-top: .5rem;
+  border: 1px solid lightgrey;
+  padding: 1rem;
+}
+
+.edit-post{
+  margin-top: 1rem;
 }
