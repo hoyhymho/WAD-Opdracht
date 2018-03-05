@@ -2,28 +2,27 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Input from './Input'
 
-class Post extends Component {
+class Post extends Component { //functional component van maken en constructor naar App.jsx verplaatsen?
 
     constructor(){
         super()
-        this.state = {titleValue: "title"}
-      }
+        this.state = {title: "title"}
+    }
 
-    handleChangeValue = (titleValue) => {
-        console.log("log vanuit de Post.jsx:" ,titleValue)
-        this.setState({titleValue});
+    handleChangeValue = (info, value) => {
+    console.log("log vanuit de App.jsx:" , info, value)
+    this.setState({[info]:value});
     }
 
     render() {
-        const {time, author, content} = this.props;
-        const {titleValue} = this.state;
+        const {title} = this.state;
 
         return(
             <article className="post-container">
-                <h2>{titleValue}</h2>
-                <p className="postBy">{time}uur geleden gepost door <span className="author">{author}</span></p>
+                <h2>{title}</h2>
+                <p className="postBy">{}uur geleden gepost door <span className="author">{}</span></p>
 
-                <p className="content">{content}</p>
+                <p className="content">{}</p>
                 
                 <div className="edit-post">
                     <h3>Edit Post</h3>

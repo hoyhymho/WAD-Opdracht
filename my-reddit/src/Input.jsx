@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 // const {number} = PropTypes;
 
-const Input = ({onChange, forLabel, type}) => {
+const Input = ({value, onChange, forwhat, type}) => {
 
     const handleChangeValue = e => {
         const {value} = e.currentTarget
@@ -11,11 +11,11 @@ const Input = ({onChange, forLabel, type}) => {
     }
     
     return (
-        <div>
-            <label htmlFor={forLabel}>{forLabel}</label>
+        <div className="edit-post">
+            <label className="inputLabel" htmlFor={forwhat}>{forwhat}</label>
             <input 
-                type={type} 
-                id={forLabel} 
+                type={type}
+                id={forwhat}
                 onChange={handleChangeValue}
             />
         </div>
@@ -23,7 +23,10 @@ const Input = ({onChange, forLabel, type}) => {
 }
 
 Input.propTypes = {
-    onChange: PropTypes.func.isRequired
+    value: PropTypes.string.isRequired,
+    onChange: PropTypes.func.isRequired,
+    forwhat: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired
 }
 
 export default Input;

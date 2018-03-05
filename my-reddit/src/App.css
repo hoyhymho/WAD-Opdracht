@@ -32,8 +32,7 @@ h3{
 }
 
 .post-container {
-  border-bottom: 1px dotted lightgrey;
-  padding: 1rem 0 1rem 5rem;
+  padding: 1rem;
   width: 50%;
   margin: auto;
 }
@@ -54,5 +53,12 @@ h3{
 }
 
 .edit-post{
-  margin-top: 1rem;
+  background-color: #eee;
+  padding: 1rem;
+  width: 50%;
+  margin: auto;
+}
+
+.inputLabel{
+  display: block;
 }

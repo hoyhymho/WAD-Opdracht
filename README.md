@@ -17,4 +17,8 @@ _______
 
 PropTypes aan elke component toegevoegd
 
-Titel kan nu aangepast worden met input
+PostFC.jsx(wordt nu gebruikt) is de functional component versie van Post.jsx 
+
+Title, author, content en date kan worden aangepast via state in de App.
+
+Ik kon het enkel werkend krijgen met de <Input />'s rechtstreeks in de <App> te zetten. 
