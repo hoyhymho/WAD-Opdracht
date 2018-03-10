@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 // const {number} = PropTypes;
 
-const Input = ({value, onChange, forwhat, type}) => {
+const Input = ({onChange, forwhat, type}) => {
 
     const handleChangeValue = e => {
         const {value} = e.currentTarget
@@ -23,7 +23,6 @@ const Input = ({value, onChange, forwhat, type}) => {
 }
 
 Input.propTypes = {
-    value: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
     forwhat: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired

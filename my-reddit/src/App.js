@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Post from './PostFC';
 import Input from './Input';
+import Form from './Form';
 
 class App extends Component {
 
@@ -34,22 +35,24 @@ class App extends Component {
         />
         <Input 
           onChange={value => this.handleChangeValue('author', value)} 
-          value={author} 
+          value={title} 
           forwhat="author"
           type="text"
         />
         <Input 
           onChange={value => this.handleChangeValue('content', value)} 
-          value={content} 
+          value={title} 
           forwhat="content"
           type="text"
         />
         <Input 
           onChange={value => this.handleChangeValue('date', value)} 
-          value={date} 
+          value={title} 
           forwhat="date"
           type="date"
         />
+
+        <Form onChange={value => this.handleChangeValue(info, value)} />
       </div>
     );
   }
