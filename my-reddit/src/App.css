@@ -31,10 +31,23 @@ h3{
   font-size: .8rem;
 }
 
+.thumbnail{
+  width: 7rem;
+  margin-right: 1rem;
+}
+
+.thumbnail img{
+  width: 7rem;
+  height: 7rem;
+  border: 1px solid lightgrey;
+  border-radius: .5rem;
+}
+
 .post-container {
-  padding: 1rem;
   width: 50%;
   margin: auto;
+  display: flex;
+  margin-top: 5rem;
 }
 
 .postBy {
@@ -47,9 +60,12 @@ h3{
 }
 
 .content{
-  margin-top: .5rem;
-  border: 1px solid lightgrey;
+  margin-top: 1rem;
+  border: 1px solid dodgerblue;
   padding: 1rem;
+  border-radius: .5rem;
+  font-size: .9rem;
+  line-height: 120%;
 }
 
 .edit-post{
@@ -57,6 +73,7 @@ h3{
   padding: 1rem;
   width: 50%;
   margin: auto;
+  margin-top: 1rem;
 }
 
 .inputLabel{

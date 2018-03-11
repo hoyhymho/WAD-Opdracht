@@ -6,10 +6,16 @@ const Post = ({title, author, content, date}) => {
     
     return (
         <article className="post-container">
-            <h2>{title}</h2>
-            <p className="postBy">{date} gepost door <span className="author">{author}</span></p>
+            <div className="thumbnail">
+                <img src="https://b.thumbs.redditmedia.com/Op1NSjYfUcy_ZH3mkRcpyojBoROKp12Ay84xhQMEneE.jpg" alt="thumb"/>
+            </div>
+            <div>
+                <h2>{title}</h2>
+                <p className="postBy">{date} gepost door <span className="author">{author}</span></p>
 
-            <p className="content">{content}</p>    
+                <p className="content">{content}</p>    
+            </div>
+             
         </article>
     );
 }

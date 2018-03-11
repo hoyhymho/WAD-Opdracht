@@ -3,33 +3,43 @@ import PropTypes from 'prop-types';
 
 // const {number} = PropTypes;
 
-const Form = ({value, onChange}) => {
+const Form = ({onChange}) => {
 
-    const handleChangeValue = (e, info) => {
-        const {value} = e.currentTarget
-        onChange(value,info);
+    const handleChangeValue = e => {
+        const {name, value} = e.currentTarget
+        onChange(name, value);
+        console.log(name)
     }
     
     return (
         <div className="edit-post">
+            <h3>Edit post</h3>
+            
             <label className="inputLabel" htmlFor="title">Title</label>
             <input 
                 type="text"
-                id="title"
-                onChange={handleChangeValue(e, "title")}
+                name="title"
+                onChange={handleChangeValue}
             />
 
             <label className="inputLabel" htmlFor="author">Author</label>
             <input 
                 type="text"
-                id="author"
+                name="author"
                 onChange={handleChangeValue}
             />
 
             <label className="inputLabel" htmlFor="content">Content</label>
             <input 
                 type="text"
-                id="content"
+                name="content"
+                onChange={handleChangeValue}
+            />
+
+            <label className="inputLabel" htmlFor="date">Date</label>
+            <input 
+                type="date"
+                name="date"
                 onChange={handleChangeValue}
             />
         </div>
@@ -37,7 +47,7 @@ const Form = ({value, onChange}) => {
 }
 
 Form.propTypes = {
-    
+    onChange: PropTypes.func.isRequired
 }
 
 export default Form;

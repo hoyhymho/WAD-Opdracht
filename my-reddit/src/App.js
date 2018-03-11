@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 import Post from './PostFC';
-import Input from './Input';
 import Form from './Form';
 
 class App extends Component {
@@ -9,9 +8,9 @@ class App extends Component {
   constructor(){
     super()
     this.state = {
-      title: "title",
+      title: "Title Placeholder",
       author: "author",
-      content: "content",
+      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sollicitudin leo risus. Aenean lobortis lectus a varius maximus. Donec ac ultrices mi. Nulla sodales dictum sodales. Vivamus nec auctor dolor. Sed iaculis sodales augue, at viverra velit hendrerit vel. Aliquam pharetra ut turpis quis convallis. Vestibulum at arcu pharetra lectus rhoncus fermentum. In dictum maximus ligula. Duis ac neque consequat, facilisis sem ac, bibendum magna. Aenean ac dapibus nulla. Donec commodo iaculis vehicula. Pellentesque vel porta nisl. ",
       date: "net"
     }
   }
@@ -27,32 +26,7 @@ class App extends Component {
     return (
       <div> 
         <Post title={title} author={author} content={content} date={date}/>
-        <Input 
-          onChange={value => this.handleChangeValue('title', value)} 
-          value={title} 
-          forwhat="title"
-          type="text"
-        />
-        <Input 
-          onChange={value => this.handleChangeValue('author', value)} 
-          value={title} 
-          forwhat="author"
-          type="text"
-        />
-        <Input 
-          onChange={value => this.handleChangeValue('content', value)} 
-          value={title} 
-          forwhat="content"
-          type="text"
-        />
-        <Input 
-          onChange={value => this.handleChangeValue('date', value)} 
-          value={title} 
-          forwhat="date"
-          type="date"
-        />
-
-        <Form onChange={value => this.handleChangeValue(info, value)} />
+        <Form onChange={(name, value) => this.handleChangeValue(name, value)} />
       </div>
     );
   }
