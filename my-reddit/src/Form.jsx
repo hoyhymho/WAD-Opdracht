@@ -16,11 +16,7 @@ const Form = ({onChange}) => {
             <h3>Edit post</h3>
             
             <label className="inputLabel" htmlFor="title">Title</label>
-            <input 
-                type="text"
-                name="title"
-                onChange={handleChangeValue}
-            />
+            <input type="text" name="title" onChange={handleChangeValue} />
 
             <label className="inputLabel" htmlFor="author">Author</label>
             <input 

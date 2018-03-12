@@ -23,12 +23,34 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+h1{
+  color: white;
+  font-size: 1.5rem;
+  margin-left: 1rem;
+}
+
+h1:hover{
+  color: salmon;
+}
+
 h2 {
   font-size: 1.3rem;
 }
 
 h3{
   font-size: .8rem;
+}
+
+header{
+  background-color: dodgerblue;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  margin-bottom: 5rem;
+}
+
+.all-posts{
+  padding-left: 15%;
+  padding-right: 15%;
 }
 
 .thumbnail{
@@ -40,14 +62,12 @@ h3{
   width: 7rem;
   height: 7rem;
   border: 1px solid lightgrey;
-  border-radius: .5rem;
+  border-radius: 10rem;
 }
 
 .post-container {
-  width: 50%;
-  margin: auto;
   display: flex;
-  margin-top: 5rem;
+  margin-right: 5rem;
 }
 
 .postBy {
@@ -66,16 +86,35 @@ h3{
   border-radius: .5rem;
   font-size: .9rem;
   line-height: 120%;
+  flexWrap: 'wrap';
 }
 
 .edit-post{
   background-color: #eee;
   padding: 1rem;
-  width: 50%;
-  margin: auto;
+  max-width: 30rem;
   margin-top: 1rem;
+  border-radius: .5rem;
 }
 
 .inputLabel{
   display: block;
+}
+
+.post-edit{
+  display: flex;
+  margin-top: 3rem;
+}
+
+.addbutton{
+    text-align: center;
+}
+
+.addbutton button{
+  padding: 1rem;
+  background-color: dodgerblue;
+  border-radius: .5rem;
+  color: white;
+  border: 0;
+  margin-top: 5rem;
 }

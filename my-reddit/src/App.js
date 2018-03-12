@@ -11,7 +11,8 @@ class App extends Component {
       title: "Title Placeholder",
       author: "author",
       content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sollicitudin leo risus. Aenean lobortis lectus a varius maximus. Donec ac ultrices mi. Nulla sodales dictum sodales. Vivamus nec auctor dolor. Sed iaculis sodales augue, at viverra velit hendrerit vel. Aliquam pharetra ut turpis quis convallis. Vestibulum at arcu pharetra lectus rhoncus fermentum. In dictum maximus ligula. Duis ac neque consequat, facilisis sem ac, bibendum magna. Aenean ac dapibus nulla. Donec commodo iaculis vehicula. Pellentesque vel porta nisl. ",
-      date: "net"
+      date: "net",
+      posts: {}
     }
   }
 
@@ -20,12 +21,32 @@ class App extends Component {
     this.setState({[info]:value});
   }
 
+  handleAddPost = id => {
+    const posts = { ...this.state.posts };
+
+    posts[id] = {key: id,  title: "Title Placeholder", author: "author", date: "net"};
+    
+    this.setState({ posts });
+    
+  }
+
+  handleChangeInput = (id, post) => {
+    const {posts} = this.state;
+    const updatedPosts = {...posts};
+    updatedPosts[id] = post;
+    this.setState({posts:updatedPosts});
+  }
+
   render() {
-    const {title, author, content, date} = this.state;
+    const {title, author, content, date, posts} = this.state;
 
     return (
       <div> 
-        <Post title={title} author={author} content={content} date={date}/>
+        <header>
+          <h1>myreddit</h1>
+        </header>
+        
+        <Post title={title} author={author} content={content} date={date} posts={posts} onAddPost={this.handleAddPost} onChange={this.handleChangeInput}/>
         <Form onChange={(name, value) => this.handleChangeValue(name, value)} />
       </div>
     );
