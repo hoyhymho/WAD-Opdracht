@@ -86,7 +86,7 @@ header{
   border-radius: .5rem;
   font-size: .9rem;
   line-height: 120%;
-  flexWrap: 'wrap';
+  flex-wrap: 'wrap';
 }
 
 .edit-post{
