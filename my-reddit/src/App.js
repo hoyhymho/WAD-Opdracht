@@ -30,6 +30,15 @@ class App extends Component {
     
   }
 
+  handleDeletePost = id => {
+    const posts = { ...this.state.posts };
+
+    delete posts[id];
+    
+    this.setState({ posts });
+    
+  }
+
   handleChangeInput = (id, post) => {
     const {posts} = this.state;
     const updatedPosts = {...posts};
@@ -46,7 +55,11 @@ class App extends Component {
           <h1>myreddit</h1>
         </header>
         
-        <Post title={title} author={author} content={content} date={date} posts={posts} onAddPost={this.handleAddPost} onChange={this.handleChangeInput}/>
+        <Post title={title} author={author} content={content} date={date} posts={posts} 
+          onAddPost={this.handleAddPost} 
+          onChange={this.handleChangeInput}
+          onDeletePost={this.handleDeletePost}
+        />
         <Form onChange={(name, value) => this.handleChangeValue(name, value)} />
       </div>
     );

@@ -2,12 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 // const {number} = PropTypes;
 
-const Post = ({title, author, content, date, posts, onAddPost, onChange}) => {
+const Post = ({title, author, content, date, posts, onAddPost, onChange, onDeletePost}) => {
 
     const handleAddPost = () =>{
         const id = Math.random();
         console.log(id);
         onAddPost(id);
+    }
+
+    const handleDeletePost = (id) =>{
+        console.log(id);
+        onDeletePost(id);
     }
 
     const handleChangeInput = (e, id) => {
@@ -16,7 +21,7 @@ const Post = ({title, author, content, date, posts, onAddPost, onChange}) => {
         const updatedPost = {...post};
         updatedPost[name] = value
         onChange(id, updatedPost)
-      }
+    }
 
     const renderPost = (posts, id) => {
         
@@ -46,6 +51,8 @@ const Post = ({title, author, content, date, posts, onAddPost, onChange}) => {
 
                     <label className="inputLabel" htmlFor="content">Content</label>
                     <input type="text" name="content" onChange={e => handleChangeInput(e,id)} />
+
+                     <button onClick={(() => handleDeletePost(id))}>Delete Post</button>
                 </div>
                
 
