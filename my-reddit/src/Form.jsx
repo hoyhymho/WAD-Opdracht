@@ -3,47 +3,43 @@ import PropTypes from 'prop-types';
 
 // const {number} = PropTypes;
 
-const Form = ({onChange}) => {
+const Form = ({onAddPost}) => {
 
-    const handleChangeValue = e => {
-        const {name, value} = e.currentTarget
-        onChange(name, value);
-        console.log(name)
+    let titleInput = null;
+    let contentInput = null;
+
+    const handleSubmit = (e) =>{
+        e.preventDefault();
+        console.log(titleInput.value, contentInput.value);
+        if(titleInput.value && contentInput.value){
+            onAddPost(titleInput.value, contentInput.value);
+            e.currentTarget.reset();
+        }
     }
     
     return (
-        <div className="edit-post">
-            <h3>Edit post</h3>
+        <div className="add-post">
+            <h3>Add post</h3>
             
-            <label className="inputLabel" htmlFor="title">Title</label>
-            <input type="text" name="title" onChange={handleChangeValue} />
+            <form onSubmit={handleSubmit}>
 
-            <label className="inputLabel" htmlFor="author">Author</label>
-            <input 
-                type="text"
-                name="author"
-                onChange={handleChangeValue}
-            />
+                <label className="inputLabel" htmlFor="title">Title</label>
+                <input type="text" name="title" ref={field => titleInput = field}/>
 
-            <label className="inputLabel" htmlFor="content">Content</label>
-            <input 
-                type="text"
-                name="content"
-                onChange={handleChangeValue}
-            />
+                <label className="inputLabel" htmlFor="content">Content</label>
+                <input type="text" name="content" ref={field => contentInput = field} />
 
-            <label className="inputLabel" htmlFor="date">Date</label>
-            <input 
-                type="date"
-                name="date"
-                onChange={handleChangeValue}
-            />
+                <input className="button" type="submit" value="Add Post" />
+
+            </form>
+
+            
         </div>
     );
 }
 
 Form.propTypes = {
-    onChange: PropTypes.func.isRequired
+    onAddPost: PropTypes.func
 }
 
 export default Form;

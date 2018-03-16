@@ -1,14 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Form from './Form';
 // const {number} = PropTypes;
 
-const Post = ({title, author, content, date, posts, onAddPost, onChange, onDeletePost}) => {
-
-    const handleAddPost = () =>{
-        const id = Math.random();
-        console.log(id);
-        onAddPost(id);
-    }
+const Post = ({posts, onAddPost, onChange, onDeletePost}) => {
 
     const handleDeletePost = (id) =>{
         console.log(id);
@@ -36,7 +31,7 @@ const Post = ({title, author, content, date, posts, onAddPost, onChange, onDelet
 
                     <div>
                         <h2>{posts.title}</h2>
-                        <p className="postBy">{date} gepost door <span className="author">{posts.author}</span></p>
+                        <p className="postBy">{posts.date} gepost door <span className="author">{posts.author}</span></p>
 
                         <p className="content">{posts.content}</p>    
                     </div>
@@ -52,7 +47,7 @@ const Post = ({title, author, content, date, posts, onAddPost, onChange, onDelet
                     <label className="inputLabel" htmlFor="content">Content</label>
                     <input type="text" name="content" onChange={e => handleChangeInput(e,id)} />
 
-                     <button onClick={(() => handleDeletePost(id))}>Delete Post</button>
+                    <button onClick={(() => handleDeletePost(id))}>Delete Post</button>
                 </div>
                
 
@@ -63,27 +58,16 @@ const Post = ({title, author, content, date, posts, onAddPost, onChange, onDelet
     
     return (
         <section className="all-posts">
-            <article className="post-container">
-                <div className="thumbnail">
-                    <img src="https://b.thumbs.redditmedia.com/Op1NSjYfUcy_ZH3mkRcpyojBoROKp12Ay84xhQMEneE.jpg" alt="thumb"/>
-                </div>
-                <div>
-                    <h2>{title}</h2>
-                    <p className="postBy">{date} gepost door <span className="author">{author}</span></p>
-
-                    <p className="content">{content}</p>    
-                </div>
-            </article>
 
             <article>
                 <h2>Posts</h2>
                 {(Object.keys(posts).map(id => renderPost(posts[id], id)))}
-
             </article>
 
-            <div className="addbutton">
-                <button onClick={(() => handleAddPost())}>Add Post</button>
-            </div>
+            <article>
+                <Form onAddPost={onAddPost} />
+            </article>
+           
             
         </section>
 
@@ -91,10 +75,9 @@ const Post = ({title, author, content, date, posts, onAddPost, onChange, onDelet
 }
 
 Post.propTypes = {
-    title: PropTypes.string.isRequired,
-    author: PropTypes.string.isRequired,
-    content: PropTypes.string.isRequired,
-    date: PropTypes.string.isRequired
+    onAddPost: PropTypes.func,
+    onChangePost: PropTypes.func,
+    onDeletePost: PropTypes.func
 }
 
 export default Post;

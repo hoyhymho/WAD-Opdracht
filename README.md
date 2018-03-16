@@ -35,5 +35,7 @@ Kan enkel maar lege posts toevoegen en editen.
 Week 5
 --------
 
-//zal eerst deleten moeten toevoegen van week 4 opdracht
---> delete post werkt 
+Delete post werkt 
+
+Add post werkt met een Form Submit nu
+
