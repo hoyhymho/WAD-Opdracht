@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Form from './Form';
-// const {number} = PropTypes;
+import {Link} from 'react-router-dom';
 
-const Post = ({posts, onAddPost, onChange, onDeletePost}) => {
+const Posts = ({posts, onAddPost, onChange, onDeletePost}) => {
 
     const handleDeletePost = (id) =>{
         console.log(id);
@@ -30,7 +30,7 @@ const Post = ({posts, onAddPost, onChange, onDeletePost}) => {
                     </div>
 
                     <div>
-                        <h2>{posts.title}</h2>
+                        <Link to={`/topic/${id}`}><h2>{posts.title}</h2></Link>
                         <p className="postBy">{posts.date} gepost door <span className="author">{posts.author}</span></p>
 
                         <p className="content">{posts.content}</p>    
@@ -74,10 +74,10 @@ const Post = ({posts, onAddPost, onChange, onDeletePost}) => {
     );
 }
 
-Post.propTypes = {
+Posts.propTypes = {
     onAddPost: PropTypes.func,
     onChangePost: PropTypes.func,
     onDeletePost: PropTypes.func
 }
 
-export default Post;
+export default Posts;

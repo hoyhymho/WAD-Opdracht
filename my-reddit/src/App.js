@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
 import './App.css';
-import Post from './PostFC';
+import Posts from './PostFC';
+import NotFound from './NotFound';
+import PostDetail from './PostDetail';
+import {Switch, Route, Link} from 'react-router-dom';
 
 class App extends Component {
 
   constructor(){
     super()
     this.state = {
-      posts: {}
+      posts: { "1": {title: "Shrek Units", content: `I've started using Shrek as a unit of time, where 1 shrek = 1hr 35min (the length of the movie)
+      Examples: "See you in a shrek!" (1hr 35min) "Dinner will be ready in half a shrek." (47.5min)
+      "My birthday is only 469.9 shreks away!" (1 month)`, author: "ShrekMan", date: "2018-01-01"}}
     }
   }
 
@@ -43,15 +48,35 @@ class App extends Component {
     return (
       <div> 
         <header>
-          <h1>myreddit</h1>
+          <Link to="/"><h1>myreddit</h1></Link>
         </header>
         
-        <Post 
-          posts={posts} 
-          onAddPost={this.handleAddPost} 
-          onChange={this.handleChangeInput}
-          onDeletePost={this.handleDeletePost}
-        />
+        <Switch>
+          <Route path="/" exact render={() => 
+            <Posts
+              posts={posts} 
+              onAddPost={this.handleAddPost} 
+              onChange={this.handleChangeInput}
+              onDeletePost={this.handleDeletePost}
+            />
+          }/>
+
+          <Route
+            path="/topic/:id"
+            render={
+              ({match}) => {
+                const id = match.params.id;
+                console.log(match.params);
+                return (posts[id]) ? <PostDetail 
+                post ={posts[id]} 
+                /> :<NotFound/>
+              }
+            }
+          />
+
+          <Route component={NotFound} />
+        </Switch>
+        
         
       </div>
     );

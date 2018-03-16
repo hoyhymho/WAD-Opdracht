@@ -39,3 +39,4 @@ Delete post werkt
 
 Add post werkt met een Form Submit nu
 
+Eerste Link gelegd met Posts(overview) en PostDetail + Fallback
