@@ -7,12 +7,13 @@ const Form = ({onAddPost}) => {
 
     let titleInput = null;
     let contentInput = null;
+    let imageInput = null;
 
     const handleSubmit = (e) =>{
         e.preventDefault();
         console.log(titleInput.value, contentInput.value);
-        if(titleInput.value && contentInput.value){
-            onAddPost(titleInput.value, contentInput.value);
+        if(titleInput.value && contentInput.value && imageInput.value){
+            onAddPost(titleInput.value, contentInput.value, imageInput.value);
             e.currentTarget.reset();
         }
     }
@@ -26,8 +27,11 @@ const Form = ({onAddPost}) => {
                 <label className="inputLabel" htmlFor="title">Title</label>
                 <input type="text" name="title" ref={field => titleInput = field}/>
 
+                <label className="inputLabel" htmlFor="image">Image URL</label>
+                <input type="text" name="image" ref={field => imageInput = field}/>
+
                 <label className="inputLabel" htmlFor="content">Content</label>
-                <input type="text" name="content" ref={field => contentInput = field} />
+                <textarea className="contentInput" type="text" name="content" ref={field => contentInput = field}/>
 
                 <input className="button" type="submit" value="Add Post" />
 

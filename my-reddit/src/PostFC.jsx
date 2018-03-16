@@ -26,7 +26,7 @@ const Posts = ({posts, onAddPost, onChange, onDeletePost}) => {
 
                 <article className="post-container">
                     <div className="thumbnail">
-                        <img src="https://b.thumbs.redditmedia.com/Op1NSjYfUcy_ZH3mkRcpyojBoROKp12Ay84xhQMEneE.jpg" alt="thumb"/>
+                        <img src={posts.image} alt="thumb"/>
                     </div>
 
                     <div>
@@ -39,13 +39,13 @@ const Posts = ({posts, onAddPost, onChange, onDeletePost}) => {
                 
                 <div className="edit-post">
                     <label className="inputLabel" htmlFor="title">Title</label>
-                    <input type="text" name="title" onChange={e => handleChangeInput(e,id)} />
+                    <input type="text" name="title" defaultValue={posts.title} onChange={e => handleChangeInput(e,id)} />
 
                     <label className="inputLabel" htmlFor="author">Author</label>
-                    <input type="text" name="author" onChange={e => handleChangeInput(e,id)} />
+                    <input type="text" name="author" defaultValue={posts.author} onChange={e => handleChangeInput(e,id)} />
 
                     <label className="inputLabel" htmlFor="content">Content</label>
-                    <input type="text" name="content" onChange={e => handleChangeInput(e,id)} />
+                    <textarea className="contentInput" type="text" name="content" defaultValue={posts.content} onChange={e => handleChangeInput(e,id)} />
 
                     <button onClick={(() => handleDeletePost(id))}>Delete Post</button>
                 </div>

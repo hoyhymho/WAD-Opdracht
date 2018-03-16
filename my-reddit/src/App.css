@@ -67,6 +67,10 @@ input {
 }
 
 .thumbnail img{
+  object-fit: cover;
+}
+
+.thumbnail img{
   width: 7rem;
   height: 7rem;
   border: 1px solid lightgrey;
@@ -124,4 +128,12 @@ input {
   background-color: dodgerblue;
   color: white;
   border-radius: .5rem;
+}
+
+.contentInput{
+  height: 5rem ;
+}
+
+.postdetail{
+  padding: 0 15%;
 }
