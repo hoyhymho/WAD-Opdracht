@@ -52,8 +52,13 @@ header{
 input {
   height: 1.7rem;
   border: 0;
-  border-radius: .5rem;
+  border-radius: .3rem;
   margin-bottom: .5rem;
+  border: 1px solid lightgrey;
+}
+
+.logo {
+  text-decoration: none;
 }
 
 .all-posts{
@@ -71,8 +76,8 @@ input {
 }
 
 .thumbnail img{
-  width: 7rem;
-  height: 7rem;
+  width: 6rem;
+  height: 6rem;
   border: 1px solid lightgrey;
   border-radius: 10rem;
 }
@@ -136,4 +141,44 @@ input {
 
 .postdetail{
   padding: 0 15%;
+}
+
+.detailtop {
+  padding-bottom: 3rem;
+  border-bottom: 1px solid lightgrey;
+}
+
+.comments{
+  margin-top: 3rem;
+}
+
+.add-comment{
+  margin-bottom: 2rem;
+}
+
+.comment{
+  padding: .5rem 0;
+  display: flex;
+}
+
+.comment-date{
+  margin-right: .5rem;
+}
+
+.image-detail{
+  margin-top: 2rem;
+}
+
+.image-detail img {
+  max-width: 60vw;
+}
+
+.comment-button {
+  display: block;
+  margin-top: .5rem;
+}
+
+.comment-input {
+  width: 40vw;
+  height: 4rem;
 }

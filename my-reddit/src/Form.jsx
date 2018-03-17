@@ -1,19 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
 
-// const {number} = PropTypes;
-
-const Form = ({onAddPost}) => {
+const Form = ({onAddPost, history}) => {
 
     let titleInput = null;
     let contentInput = null;
     let imageInput = null;
 
+    const redirect = (id) => {
+        console.log(history, id);
+        history.push(`/post/${id}`);
+    }
+
     const handleSubmit = (e) =>{
         e.preventDefault();
         console.log(titleInput.value, contentInput.value);
         if(titleInput.value && contentInput.value && imageInput.value){
-            onAddPost(titleInput.value, contentInput.value, imageInput.value);
+            onAddPost(titleInput.value, contentInput.value, imageInput.value, redirect);
             e.currentTarget.reset();
         }
     }
@@ -46,4 +50,4 @@ Form.propTypes = {
     onAddPost: PropTypes.func
 }
 
-export default Form;
+export default withRouter(Form);

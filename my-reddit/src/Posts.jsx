@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Form from './Form';
 import {Link} from 'react-router-dom';
 
-const Posts = ({posts, onAddPost, onChange, onDeletePost}) => {
+const Posts = ({posts, onChange, onDeletePost}) => {
 
     const handleDeletePost = (id) =>{
         console.log(id);
@@ -21,17 +20,15 @@ const Posts = ({posts, onAddPost, onChange, onDeletePost}) => {
     const renderPost = (posts, id) => {
         
         return (
-
             <section key={id} className="post-edit">
-
                 <article className="post-container">
                     <div className="thumbnail">
                         <img src={posts.image} alt="thumb"/>
                     </div>
 
                     <div>
-                        <Link to={`/topic/${id}`}><h2>{posts.title}</h2></Link>
-                        <p className="postBy">{posts.date} gepost door <span className="author">{posts.author}</span></p>
+                        <Link to={`/post/${id}`}><h2>{posts.title}</h2></Link>
+                        <p className="postBy">{posts.date} posted by <span className="author">{posts.author}</span></p>
 
                         <p className="content">{posts.content}</p>    
                     </div>
@@ -50,7 +47,6 @@ const Posts = ({posts, onAddPost, onChange, onDeletePost}) => {
                     <button onClick={(() => handleDeletePost(id))}>Delete Post</button>
                 </div>
                
-
             </section>
             
         );
@@ -62,12 +58,9 @@ const Posts = ({posts, onAddPost, onChange, onDeletePost}) => {
             <article>
                 <h2>Posts</h2>
                 {(Object.keys(posts).map(id => renderPost(posts[id], id)))}
-            </article>
 
-            <article>
-                <Form onAddPost={onAddPost} />
+                <Link to="/add"><button className="button" value="Add Post">Add Post</button></Link>
             </article>
-           
             
         </section>
 
@@ -75,7 +68,7 @@ const Posts = ({posts, onAddPost, onChange, onDeletePost}) => {
 }
 
 Posts.propTypes = {
-    onAddPost: PropTypes.func,
+    posts: PropTypes.object.isRequired,
     onChangePost: PropTypes.func,
     onDeletePost: PropTypes.func
 }
