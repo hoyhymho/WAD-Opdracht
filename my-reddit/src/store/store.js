@@ -1,14 +1,19 @@
 import Comment from '../models/Comment';
+import Post from '../models/Post';
 import { decorate, observable, action, computed } from "mobx";
 
 class Store {
 
+    posts = [];
+
     constructor(){
-        this.state = {
-          posts: { "1": {title: "Shrek Units", content: `I've started using Shrek as a unit of time, where 1 shrek = 1hr 35min (the length of the movie)
-          Examples: "See you in a shrek!" (1hr 35min) "Dinner will be ready in half a shrek." (47.5min)
-          "My birthday is only 469.9 shreks away!" (1 month)`, author: "ShrekMan", date: "2018-01-01", image:"https://vignette.wikia.nocookie.net/shrek/images/c/cc/Shrek_smiling.jpg/revision/latest?cb=20130413033028", comments: {"a": new Comment("delet")}}}
-        }
+        this.addPost(new Post(`Shrek Units`, `I've started using Shrek as a unit of time, where 1 shrek = 1hr 35min (the length of the movie)
+        Examples: "See you in a shrek!" (1hr 35min) "Dinner will be ready in half a shrek." (47.5min)
+        "My birthday is only 469.9 shreks away!" (1 month)`, "2018-01-01", "ShrekMan", "https://vignette.wikia.nocookie.net/shrek/images/c/cc/Shrek_smiling.jpg/revision/latest?cb=20130413033028" ));
+    }
+
+    addPost = post => {
+        this.posts.push(post);
     }
 
     handleChangeValue = (info, value) => {
@@ -17,17 +22,14 @@ class Store {
     }
     
     handleAddPost = (title, content, image, callback) => {
-        const posts = { ...this.state.posts };
         const date = new Date().toISOString().slice(0,10);
-        const id = Date.now();
-        posts[id] = {key: id,  title: title, content: content, author: "you", date: date, image: image, comments: {} };
-        this.setState({ posts }, ()=>{callback(id)});
-    }
+        const author = "you";
+ 
+        this.addPost(new Post(title, content, date, author, image ));  }
 
     handleDeletePost = id => {
-        const posts = { ...this.state.posts };
-        delete posts[id];
-        this.setState({ posts });
+        delete this.posts[id];
+        console.log(store);
     }
 
     handleChangeInput = (id, post) => {
@@ -47,6 +49,7 @@ class Store {
 }
 
 decorate(Store, {
+    posts: observable,
     handleChangeValue: action,
     handleAddPost: action,
     handleDeletePost: action,
@@ -55,5 +58,4 @@ decorate(Store, {
 });
 
 const store = new Store();
-window.store = store; //enkel in dev
 export default store;

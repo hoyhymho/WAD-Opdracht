@@ -47,7 +47,7 @@ const Form = ({store, history}) => {
 }
 
 Form.propTypes = {
-    onAddPost: PropTypes.func
+    store: PropTypes.any
 }
 
 export default withRouter(Form);

@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
+import {observer} from 'mobx-react';
 
 const Posts = ({store}) => {
 
@@ -57,8 +58,8 @@ const Posts = ({store}) => {
 
             <article>
                 <h2>Posts</h2>
-                {(Object.keys(store.state.posts).map(id => renderPost(store.state.posts[id], id)))}
-
+                {(Object.keys(store.posts).map(id => renderPost(store.posts[id], id)))}
+                {console.log(store)}
                 <Link to="/add"><button className="button" value="Add Post">Add Post</button></Link>
             </article>
             
@@ -67,5 +68,9 @@ const Posts = ({store}) => {
     );
 }
 
+Posts.propTypes = {
+    store: PropTypes.any
+}
 
-export default Posts;
+
+export default observer(Posts);
