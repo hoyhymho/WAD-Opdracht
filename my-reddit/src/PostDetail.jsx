@@ -3,10 +3,10 @@ import Comment from './models/Comment'
 import AddComment from './AddComment'
 import PropTypes from 'prop-types';
 
-const PostDetail = ({ post, id, onAddComment }) => {
+const PostDetail = ({ store, id, post }) => {
 
   const handleAddComment = value => {
-    onAddComment(id, value);
+    store.handleAddComment(id, value);
   }
 
   const renderComment = (comment) => {

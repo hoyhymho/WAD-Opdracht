@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 
-const Form = ({onAddPost, history}) => {
+const Form = ({store, history}) => {
 
     let titleInput = null;
     let contentInput = null;
@@ -17,7 +17,7 @@ const Form = ({onAddPost, history}) => {
         e.preventDefault();
         console.log(titleInput.value, contentInput.value);
         if(titleInput.value && contentInput.value && imageInput.value){
-            onAddPost(titleInput.value, contentInput.value, imageInput.value, redirect);
+            store.handleAddPost(titleInput.value, contentInput.value, imageInput.value, redirect);
             e.currentTarget.reset();
         }
     }

@@ -2,19 +2,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 
-const Posts = ({posts, onChange, onDeletePost}) => {
+const Posts = ({store}) => {
 
     const handleDeletePost = (id) =>{
         console.log(id);
-        onDeletePost(id);
+        store.handleDeletePost(id);
     }
 
     const handleChangeInput = (e, id) => {
         const {value, name} = e.currentTarget;
-        const post = posts[id];
+        const post = store.state.posts[id];
         const updatedPost = {...post};
         updatedPost[name] = value
-        onChange(id, updatedPost)
+        store.handleChangeInput(id, updatedPost)
     }
 
     const renderPost = (posts, id) => {
@@ -57,7 +57,7 @@ const Posts = ({posts, onChange, onDeletePost}) => {
 
             <article>
                 <h2>Posts</h2>
-                {(Object.keys(posts).map(id => renderPost(posts[id], id)))}
+                {(Object.keys(store.state.posts).map(id => renderPost(store.state.posts[id], id)))}
 
                 <Link to="/add"><button className="button" value="Add Post">Add Post</button></Link>
             </article>
@@ -67,10 +67,5 @@ const Posts = ({posts, onChange, onDeletePost}) => {
     );
 }
 
-Posts.propTypes = {
-    posts: PropTypes.object.isRequired,
-    onChangePost: PropTypes.func,
-    onDeletePost: PropTypes.func
-}
 
 export default Posts;
