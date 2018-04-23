@@ -25,27 +25,21 @@ class Store {
         const date = new Date().toISOString().slice(0,10);
         const author = "you";
  
-        this.addPost(new Post(title, content, date, author, image ));  }
-
-    handleDeletePost = id => {
-        delete this.posts[id];
-        console.log(store);
+        this.addPost(new Post(title, content, date, author, image ));  
+        //()=>{callback(id)
     }
 
-    handleChangeInput = (id, post) => {
-        const {posts} = this.state;
-        const updatedPosts = {...posts};
-        updatedPosts[id] = post;
-        //this.setState({posts:updatedPosts});
+    handleDeletePost = post => {
+        this.posts.remove(post);
     }
 
-    handleAddComment = (postId, value) => {
-        const comment = new Comment(value);
-        const posts = {...this.state.posts}
-        posts[postId].comments[Date.now()] = comment;
-        //this.setState({posts});
-        console.log(comment);
-    }
+    // handleAddComment = (postId, value) => {
+    //     const comment = new Comment(value);
+    //     const posts = {...this.state.posts}
+    //     posts[postId].comments[Date.now()] = comment;
+    //     this.setState({posts});
+    //     console.log(comment);
+    // }
 }
 
 decorate(Store, {

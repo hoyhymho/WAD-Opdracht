@@ -28,8 +28,9 @@ class App extends Component {
             render={
               ({match}) => {
                 const id = match.params.id;
-                return (store.state.posts[id]) ? <PostDetail 
-                store ={store} id = {id} post = {store.state.posts[id]}
+                // console.log(store.posts.id)
+                return (store.posts.id) ? <PostDetail 
+                store={store} id={id} post={store.posts.id}
                 /> :<NotFound/>
               }
             }

@@ -10,7 +10,21 @@ class Post {
     this.author = author;
     this.image = image
   }
+
+  updateTitle = value => {
+    this.title = value;
+  };
+
+  updateAuthor = value => {
+    this.author = value;
+  };
+
+  updateContent = value => {
+    this.content = value;
+  };
+
 }
+
 decorate(Post, {
   title: observable, 
   content: observable, 

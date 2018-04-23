@@ -5,47 +5,34 @@ import {observer} from 'mobx-react';
 
 const Posts = ({store}) => {
 
-    const handleDeletePost = (id) =>{
-        console.log(id);
-        store.handleDeletePost(id);
-    }
-
-    const handleChangeInput = (e, id) => {
-        const {value, name} = e.currentTarget;
-        const post = store.state.posts[id];
-        const updatedPost = {...post};
-        updatedPost[name] = value
-        store.handleChangeInput(id, updatedPost)
-    }
-
-    const renderPost = (posts, id) => {
+    const renderPost = (post, id) => {
         
         return (
             <section key={id} className="post-edit">
                 <article className="post-container">
                     <div className="thumbnail">
-                        <img src={posts.image} alt="thumb"/>
+                        <img src={post.image} alt="thumb"/>
                     </div>
 
                     <div>
-                        <Link to={`/post/${id}`}><h2>{posts.title}</h2></Link>
-                        <p className="postBy">{posts.date} posted by <span className="author">{posts.author}</span></p>
+                        <Link to={`/post/${id}`}><h2>{post.title}</h2></Link>
+                        <p className="postBy">{post.date} posted by <span className="author">{post.author}</span></p>
 
-                        <p className="content">{posts.content}</p>    
+                        <p className="content">{post.content}</p>    
                     </div>
                 </article>
                 
                 <div className="edit-post">
                     <label className="inputLabel" htmlFor="title">Title</label>
-                    <input type="text" name="title" defaultValue={posts.title} onChange={e => handleChangeInput(e,id)} />
+                    <input type="text" name="title" defaultValue={post.title} onChange={e => post.updateTitle(e.target.value)} />
 
                     <label className="inputLabel" htmlFor="author">Author</label>
-                    <input type="text" name="author" defaultValue={posts.author} onChange={e => handleChangeInput(e,id)} />
+                    <input type="text" name="author" defaultValue={post.author} onChange={e => post.updateAuthor(e.target.value)} />
 
                     <label className="inputLabel" htmlFor="content">Content</label>
-                    <textarea className="contentInput" type="text" name="content" defaultValue={posts.content} onChange={e => handleChangeInput(e,id)} />
+                    <textarea className="contentInput" type="text" name="content" defaultValue={post.content} onChange={e => post.updateContent(e.target.value)} />
 
-                    <button onClick={(() => handleDeletePost(id))}>Delete Post</button>
+                    <button onClick={(() => store.handleDeletePost(post))}>Delete Post</button>
                 </div>
                
             </section>
