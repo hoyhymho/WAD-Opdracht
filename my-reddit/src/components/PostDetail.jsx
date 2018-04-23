@@ -1,6 +1,6 @@
 import React from 'react';
-import Comment from './models/Comment'
-import AddComment from './AddComment'
+import Comment from '../models/Comment'
+import AddComment from '../components/AddComment'
 import PropTypes from 'prop-types';
 
 const PostDetail = ({ store, id, post }) => {

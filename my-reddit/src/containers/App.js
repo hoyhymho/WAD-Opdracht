@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import './App.css';
-import Posts from './Posts';
-import NotFound from './NotFound';
-import PostDetail from './PostDetail';
-import Form from './Form';
+import '../css/App.css';
+import Posts from '../components/Posts';
+import NotFound from '../components/NotFound';
+import PostDetail from '../components/PostDetail';
+import Form from '../components/Form';
 import {Switch, Route, Link} from 'react-router-dom';
 import {observer} from "mobx-react";
 
