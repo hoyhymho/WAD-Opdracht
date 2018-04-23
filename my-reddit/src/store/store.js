@@ -36,14 +36,14 @@ class Store {
         const {posts} = this.state;
         const updatedPosts = {...posts};
         updatedPosts[id] = post;
-        this.setState({posts:updatedPosts});
+        //this.setState({posts:updatedPosts});
     }
 
     handleAddComment = (postId, value) => {
         const comment = new Comment(value);
         const posts = {...this.state.posts}
         posts[postId].comments[Date.now()] = comment;
-        this.setState({posts});
+        //this.setState({posts});
         console.log(comment);
     }
 }
