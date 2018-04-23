@@ -5,6 +5,7 @@ import NotFound from './NotFound';
 import PostDetail from './PostDetail';
 import Form from './Form';
 import {Switch, Route, Link} from 'react-router-dom';
+import {observer} from "mobx-react";
 
 class App extends Component {
 
@@ -48,4 +49,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default observer(App);

@@ -58,7 +58,7 @@ const Posts = ({store}) => {
 
             <article>
                 <h2>Posts</h2>
-                {(Object.keys(store.posts).map(id => renderPost(store.posts[id], id)))}
+                {store.posts.map(post => renderPost(post, post.id))}
                 {console.log(store.posts)}
                 <Link to="/add"><button className="button" value="Add Post">Add Post</button></Link>
             </article>
