@@ -15,7 +15,6 @@ const Form = ({store, history}) => {
 
     const handleSubmit = (e) =>{
         e.preventDefault();
-        console.log(titleInput.value, contentInput.value);
         if(titleInput.value && contentInput.value && imageInput.value){
             store.handleAddPost(titleInput.value, contentInput.value, imageInput.value, redirect);
             e.currentTarget.reset();

@@ -12,20 +12,17 @@ class Store {
         "My birthday is only 469.9 shreks away!" (1 month)`, "2018-01-01", "ShrekMan", "https://vignette.wikia.nocookie.net/shrek/images/c/cc/Shrek_smiling.jpg/revision/latest?cb=20130413033028" ));
     }
 
-    addPost = post => {
+    addPost = (post, callback) => {
         this.posts.push(post);
-    }
-
-    handleChangeValue = (info, value) => {
-        console.log("log vanuit de App.jsx:" , info, value)
-        this.setState({[info]:value});
+        console.log(post.id);
+        ()=>{callback(post.id)};
     }
     
     handleAddPost = (title, content, image, callback) => {
         const date = new Date().toISOString().slice(0,10);
         const author = "you";
  
-        this.addPost(new Post(title, content, date, author, image ));  
+        this.addPost(new Post(title, content, date, author, image), callback);  
         //()=>{callback(id)
     }
 
