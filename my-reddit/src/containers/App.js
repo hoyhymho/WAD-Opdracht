@@ -29,7 +29,6 @@ class App extends Component {
               ({match}) => {
                 const id = match.params.id;
                 const post = store.posts.find(check => check.id === id);
-                console.log(post);
                 return (post) ? <PostDetail 
                 store={store} id={id} post={post}
                 /> :<NotFound/>

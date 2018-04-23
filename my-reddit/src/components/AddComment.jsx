@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types'
 
-const AddComment = ({onSubmit}) => {
+const AddComment = ({store, id, post}) => {
 
   let input = null;
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if(input.value){
-      onSubmit(input.value);
+      post.addComment(input.value);
       e.currentTarget.reset();
     }
     

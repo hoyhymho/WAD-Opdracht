@@ -1,14 +1,16 @@
 import uniqid from "uniqid";
+import Comment from '../models/Comment';
 import {observable, decorate} from "mobx";
 
 class Post {
-  constructor(title, content, date, author,image) {
+  constructor(title, content, date, author, image, comments) {
     this.id = uniqid();
     this.title = title;
     this.content = content;
     this.date = date;
     this.author = author;
-    this.image = image
+    this.image = image;
+    this.comments = [];
   }
 
   updateTitle = value => {
@@ -23,6 +25,10 @@ class Post {
     this.content = value;
   };
 
+  addComment = value => {
+    this.comments.push(new Comment(value))
+  }
+
 }
 
 decorate(Post, {
@@ -31,6 +37,7 @@ decorate(Post, {
   date: observable, 
   author: observable, 
   image: observable, 
+  comments: observable,
 })
 
 export default Post;

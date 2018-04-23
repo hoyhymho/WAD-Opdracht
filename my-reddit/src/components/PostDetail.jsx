@@ -2,12 +2,9 @@ import React from 'react';
 import Comment from '../models/Comment'
 import AddComment from '../components/AddComment'
 import PropTypes from 'prop-types';
+import {observer} from 'mobx-react';
 
 const PostDetail = ({ store, id, post }) => {
-
-  const handleAddComment = value => {
-    store.handleAddComment(id, value);
-  }
 
   const renderComment = (comment) => {
     
@@ -34,9 +31,9 @@ const PostDetail = ({ store, id, post }) => {
       </section> 
         
       <section className="comments">
-      <AddComment onSubmit={handleAddComment} />
+      <AddComment store={store} id={id} post={post} />
       {
-        (post.comments) ? Object.keys(post.comments).map( commentId => renderComment(post.comments[commentId]) ) : console.log("geen comments")
+        (post.comments) ? post.comments.map( comment => renderComment(comment) ) : console.log("geen comments")
       }
              
       </section>
@@ -54,4 +51,4 @@ PostDetail.defaultProps = {
   comment: new Comment("test")
 }
 
-export default PostDetail;
+export default observer(PostDetail);
