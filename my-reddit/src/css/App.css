@@ -146,6 +146,7 @@ input {
 .detailtop {
   padding-bottom: 3rem;
   border-bottom: 1px solid lightgrey;
+  display: flex;
 }
 
 .comments{

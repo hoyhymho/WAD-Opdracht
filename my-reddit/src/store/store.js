@@ -9,7 +9,7 @@ class Store {
     constructor(){
         this.addPost(new Post(`Shrek Units`, `I've started using Shrek as a unit of time, where 1 shrek = 1hr 35min (the length of the movie)
         Examples: "See you in a shrek!" (1hr 35min) "Dinner will be ready in half a shrek." (47.5min)
-        "My birthday is only 469.9 shreks away!" (1 month)`, "2018-01-01", "ShrekMan", "https://vignette.wikia.nocookie.net/shrek/images/c/cc/Shrek_smiling.jpg/revision/latest?cb=20130413033028", new Comment(`delet`) ));
+        "My birthday is only 469.9 shreks away!" (1 month)`, "2018-01-01", "ShrekLover", "https://vignette.wikia.nocookie.net/shrek/images/c/cc/Shrek_smiling.jpg/revision/latest?cb=20130413033028", new Comment(`delet`) ));
     }
 
     addPost = (post, callback) => {

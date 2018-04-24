@@ -19,15 +19,21 @@ const PostDetail = ({ store, id, post }) => {
   return (
     <div className="postdetail">
       <section className="detailtop">
-        <h2>{post.title}</h2>
-        <p className="postBy">{post.date} posted by <span className="author">{post.author}</span></p>
-        <div className="content">
-          <p className="contenttxt">{post.content}</p>   
-          <div className="image-detail">
-            <img src={post.image} alt="detail-img"/>
-          </div> 
+        <div className="votes">
+          <div className="upvote" onClick={post.upvote}></div>
+          <p>{post.total}</p>
+          <div className="downvote" onClick={post.downvote}></div>
         </div>
-        
+        <div>
+          <h2>{post.title}</h2>
+          <p className="postBy">{post.date} posted by <span className="author">{post.author}</span></p>
+          <div className="content">
+            <p className="contenttxt">{post.content}</p>   
+            <div className="image-detail">
+              <img src={post.image} alt="detail-img"/>
+            </div> 
+          </div>
+        </div>
       </section> 
         
       <section className="comments">
