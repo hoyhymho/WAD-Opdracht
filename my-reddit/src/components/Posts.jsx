@@ -10,6 +10,12 @@ const Posts = ({store}) => {
         return (
             <section key={id} className="post-edit">
                 <article className="post-container">
+                    <div className="votes">
+                        <div className="upvote" onClick={post.upvote}></div>
+                        <p>{post.total}</p>
+                        <div className="downvote" onClick={post.downvote}></div>
+                    </div>
+
                     <div className="thumbnail">
                         <img src={post.image} alt="thumb"/>
                     </div>
@@ -46,7 +52,6 @@ const Posts = ({store}) => {
             <article>
                 <h2>Posts</h2>
                 {store.posts.map(post => renderPost(post, post.id))}
-                {console.log(store.posts)}
                 <Link to="/add"><button className="button" value="Add Post">Add Post</button></Link>
             </article>
             

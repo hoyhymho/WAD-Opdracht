@@ -1,6 +1,6 @@
 import Post from '../models/Post';
 import Comment from '../models/Comment';
-import { decorate, observable, action, computed } from "mobx";
+import { decorate, observable, action } from "mobx";
 
 class Store {
 
@@ -15,7 +15,7 @@ class Store {
     addPost = (post, callback) => {
         this.posts.push(post);
         console.log(post.id);
-        ()=>{callback(post.id)};
+        //()=>{callback(post.id)};
     }
     
     handleAddPost = (title, content, image, callback) => {

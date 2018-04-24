@@ -182,3 +182,37 @@ input {
   width: 40vw;
   height: 4rem;
 }
+
+.votes {
+  margin-right: 2rem;
+  vertical-align: center;
+}
+
+.votes p {
+  font-size: 1.6rem;
+  padding: .5rem;
+}
+
+.upvote, .downvote {
+  width: 32px;
+  height: 32px;
+  opacity: 0.6;
+}
+
+.upvote {
+  background-image: url(../assets/upvote.png);
+}
+
+.upvote:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.downvote {
+  background-image: url(../assets/downvote.png);
+}
+
+.downvote:hover {
+  opacity: 1;
+  cursor: pointer;
+}
