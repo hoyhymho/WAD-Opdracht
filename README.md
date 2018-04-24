@@ -45,3 +45,14 @@ Comments toevoegen in PostDetail
 
 AddPost gesplitst van Posts.jsx -> Route /add
 
+
+Week 6
+---------
+
+State vervangen door MobX
+
+App in een Route gestoken met een location omdat anders de Links niet meer werken door MobX
+
+Een nieuwe post maken wordt gedaan mbv de Post.js model, comments zitten er ook in als lege array en kunnen worden toegevoegd met de addComment action
+
+Votes toegevoegd, berekent de total met @computed upvotes-downvotes
