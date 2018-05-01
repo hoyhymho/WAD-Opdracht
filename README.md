@@ -56,3 +56,9 @@ App in een Route gestoken met een location omdat anders de Links niet meer werke
 Een nieuwe post maken wordt gedaan mbv de Post.js model, comments zitten er ook in als lege array en kunnen worden toegevoegd met de addComment action
 
 Votes toegevoegd, berekent de total met @computed upvotes-downvotes
+
+
+Week 6
+---------
+
+basis client/server mappenstructuur opgezet - werkt niet
