@@ -1,0 +1,25 @@
+module.exports = `
+  type Post {
+    _id: String
+    title: String
+    content: String
+    image: String
+  }
+
+  type Query {
+    allPosts: [Post]
+  }
+
+  type Mutation {
+    addPost(
+      title: String! 
+      content: String!
+      image: String!
+    ):Post
+    deletePost(
+      _id: String!
+    ):Post
+  }
+`
+
+

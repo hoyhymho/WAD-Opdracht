@@ -62,3 +62,11 @@ Week 6
 ---------
 
 basis client/server mappenstructuur opgezet - werkt niet
+
+
+Week 7
+-----------
+
+Server werkt wel nu
+
+Posts tonen en Post toevoegen werken met graphql (Query & Mutation)
