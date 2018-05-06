@@ -70,3 +70,5 @@ Week 7
 Server werkt wel nu
 
 Posts tonen en Post toevoegen werken met graphql (Query & Mutation)
+
+DeletePost werkt met HOC werkwijze

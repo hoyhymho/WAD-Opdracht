@@ -1,35 +1,31 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
-import {observer} from 'mobx-react';
+//import {observer} from 'mobx-react';
 
-// import gql from "graphql-tag";
-// import { Mutation } from "react-apollo";
-// import GET_POSTS from "../graphql/getAllPosts"
+import gql from "graphql-tag";
+//import { Mutation } from "react-apollo";
+import GET_POSTS from "../graphql/getAllPosts"
 
-// const DELETE_POST = gql`
-//     mutation deletePost($id: String!) {
-//         deletedUser: deletePost(_id: $id) {
-//         _id
-//         }
-//     }
-// `;
+import { graphql, compose } from "react-apollo";
 
-const Posts = ({posts}) => {
+const DELETE_POST = gql`
+    mutation deletePost($id: String!) {
+        deletedPost: deletePost(_id: $id) {
+            _id
+        }
+    }
+`;
+
+const Posts = ({posts, deletePost}) => {
 
     const renderPost = (post, id) => {
+
+        const handleDelete = e => {
+            deletePost({ variables: { id: post._id } });
+        };
         
         return (
-            // <Mutation
-            //     mutation={DELETE_POST}
-            //     update={(cache, { data: { deletedPost } }) => {
-            //         const data = cache.readQuery({ query: GET_POSTS });
-            //         data.allUsers = data.allPosts.filter(
-            //             post => post._id !== deletedPost._id
-            //         );
-            //         cache.writeQuery({ query: GET_POSTS, data });
-            //     }}
-            // >
             <section key={id} className="post-edit">
                 <article className="post-container">
                     <div className="votes">
@@ -60,12 +56,10 @@ const Posts = ({posts}) => {
                     <label className="inputLabel" htmlFor="content">Content</label>
                     <textarea className="contentInput" type="text" name="content" defaultValue={post.content} onChange={e => post.updateContent(e.target.value)} />
 
-                    {/* <button onClick={(() => store.handleDeletePost(post))}>Delete Post</button> */}
+                    <button onClick={(() => handleDelete({variables: {id: post._id} }))}>Delete Post</button>
                 </div>
-               
+            
             </section>
-
-            // </Mutation>
         );
     }
     
@@ -87,5 +81,21 @@ Posts.propTypes = {
     store: PropTypes.any
 }
 
+export default compose(
+    graphql(DELETE_POST, {
+      name: "deletePost",
+      options: {
+        update: (proxy, { data: { deletedPost } }) => {
+          const data = proxy.readQuery({ query: GET_POSTS });
+          data.allPosts = data.allPosts.filter(
+            post => post._id !== deletedPost._id
+          );
+          proxy.writeQuery({ query: GET_POSTS, data });
+        }
+      }
+    })
+  )(Posts);
+  
 
-export default observer(Posts);
+
+//export default observer(Posts);

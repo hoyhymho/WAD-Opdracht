@@ -13,7 +13,7 @@ const Form = ({store, posts, history}) => {
     let imageInput = null;
 
     const redirect = (id) => {
-        //console.log(history, id);
+        console.log(history, id);
         history.push(`/post/${id}`);
     }
     
@@ -41,8 +41,7 @@ const Form = ({store, posts, history}) => {
                                 title: titleInput.value, 
                                 content: contentInput.value, 
                                 image: imageInput.value, 
-                                redirect} 
-                            });
+                            } }, redirect);
                         e.currentTarget.reset();
                     }
                 }} >
