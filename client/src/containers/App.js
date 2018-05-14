@@ -10,6 +10,7 @@ import {observer} from "mobx-react";
 
 import { Query } from "react-apollo";
 import GET_ALL_POSTS from "../graphql/getAllPosts";
+import ProtectedRoute from "../components/ProtectedRoute";
 
 class App extends Component {
 
@@ -38,10 +39,7 @@ class App extends Component {
                     render={
                       ({match}) => {
                         const id = match.params.id;
-                        const post = store.posts.find(check => check.id === id);
-                        return (post) ? <PostDetail 
-                        store={store} id={id} post={post}
-                        /> :<NotFound/>
+                        return <PostDetail key={id} id={id} />
                       }
                     }
                   />
@@ -50,6 +48,8 @@ class App extends Component {
                     path="/add"
                     render={() => <Form posts={allPosts} />}
                   />
+
+                  <ProtectedRoute path="/add" component={Form} />
 
                   <Route component={NotFound} />
                 </Switch>

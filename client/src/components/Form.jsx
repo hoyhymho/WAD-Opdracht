@@ -41,8 +41,9 @@ const Form = ({store, posts, history}) => {
                                 title: titleInput.value, 
                                 content: contentInput.value, 
                                 image: imageInput.value, 
-                            } }, redirect);
+                            } });
                         e.currentTarget.reset();
+                        history.push(`/`);
                     }
                 }} >
                     <label className="inputLabel" htmlFor="title">Title</label>

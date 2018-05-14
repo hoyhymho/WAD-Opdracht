@@ -5,6 +5,15 @@ module.exports = `
     content: String
     image: String
     user: User!
+    comments: [Comment]
+  }
+
+  type Comment {
+    _id: String
+    message: String
+    post: Post
+    createdAt: Date
+    user: User!
   }
 
   type User {
@@ -13,10 +22,12 @@ module.exports = `
     email: String!
     jwt: String
     posts: [Post]!
+    comments: [Comment]!
   }
 
   type Query {
     allPosts: [Post]
+    post(_id:String!):Post
     allUsers: [User]
   }
 
@@ -26,6 +37,10 @@ module.exports = `
       content: String!
       image: String!
     ):Post
+    addComment(
+      post: String!
+      message: String!
+    ):Comment
     deletePost(
       _id: String!
     ):Post
@@ -39,6 +54,8 @@ module.exports = `
       password: String!
     ):User
   }
+
+  scalar Date
 `
 
 

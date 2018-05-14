@@ -1,8 +1,13 @@
-const { Post, User } = require("./connectors");
+const { Post, User, Comment } = require("./connectors");
 const { GraphQLScalarType, GraphQLError } = require("graphql");
 const { Kind } = require("graphql/language");
 const jwt = require("jsonwebtoken");
 const { jwtsecret } = require("./config/");
+
+const validateValue = value => {
+  if (isNaN(Date.parse(value)))
+    throw new GraphQLError(`Query error: not a valid date`, [value]);
+};
 
 function getAuthenticatedUser(context) {
   return context.user.then(user => {
@@ -21,13 +26,22 @@ module.exports = {
     allUsers() {
       return User.find();
     },
+    post(_, args) {
+      return Post.findById(args._id);
+    }
   },
   Mutation: {
-    addPost(_, args) {
+    addPost(_, args, context) {
       return getAuthenticatedUser(context).then(user =>{
         args.user = user.id;
         return new Post(args).save();
       })
+    },
+    addComment(_, args, context) {
+      return getAuthenticatedUser(context).then(user => {
+        args.user = user.id;
+        return new Comment(args).save();
+      });
     },
     deletePost(_, args) {
       const { _id } = args;
@@ -73,12 +87,50 @@ module.exports = {
   Post: {
     user: post => {
       return User.findById(post.user);
+    },
+    comments: post => {
+      return Comment.find({ post: post._id })
+    }
+  },
+  Comment: {
+    post: comment => {
+      return Post.findById(comment.post);
+    },
+    user: comment => {
+      return User.findById(comment.user);
     }
   },
   User: {
     posts: user => {
       return Post.find({ user: user._id });
     },
+    comments: user => {
+      return Comment.find({ user: user._id });
+    }
   },
+  Date: new GraphQLScalarType({
+    name: "Date",
+    description: "Date type",
+    parseValue(value) {
+      // value comes from the client, in variables
+      validateValue(value);
+      return new Date(value); // sent to resolvers
+    },
+    parseLiteral(ast) {
+      // value comes from the client, inlined in the query
+      if (ast.kind !== Kind.STRING) {
+        throw new GraphQLError(
+          `Query error: Can only parse dates strings, got a: ${ast.kind}`,
+          [ast]
+        );
+      }
+      validateValue(ast.value);
+      return new Date(ast.value); // sent to resolvers
+    },
+    serialize(value) {
+      // value comes from resolvers
+      return value.toISOString(); // sent to the client
+    }
+  })
 
 };

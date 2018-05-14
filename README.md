@@ -72,3 +72,10 @@ Server werkt wel nu
 Posts tonen en Post toevoegen werken met graphql (Query & Mutation)
 
 DeletePost werkt met HOC werkwijze
+
+
+Week 8
+-----------
+
+Register en login/logout werkt 
+AddPost is een Protected Component 

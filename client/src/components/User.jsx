@@ -8,6 +8,7 @@ import Login from "./Login";
 class User extends Component {
   constructor(props) {
     super(props);
+    this.state = { showRegister: true };
   }
 
   handleSignOut = client => {
@@ -19,10 +20,30 @@ class User extends Component {
     return (
       <section className="user">
         <h2>User</h2>
-        <div>
-          <Register />
-          <Login props={this.props} />
-        </div>
+        <Query query={GET_CURRENT_USER}>
+          {({ loading, error, data, client }) => {
+            if (loading) return null;
+            if (error) return null;
+            if (data.currentUser) {
+              return (
+                <div>
+                  <p className="signedin">
+                    Signed in as {data.currentUser.name}
+                  </p>
+                  <button onClick={() => this.handleSignOut(client)}>
+                    Sign Out
+                  </button>
+                </div>
+              );
+            }
+            return (
+              <div>
+                <Register />
+                <Login client={client} />
+              </div>
+            );
+          }}
+        </Query>
       </section>
     );
   }

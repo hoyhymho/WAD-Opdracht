@@ -17,6 +17,17 @@ const UserSchema = mongoose.Schema({
   passwordHash: { type: String, required: true }
 });
 
+const CommentSchema = mongoose.Schema(
+  {
+    message: String,
+    post: String,
+    user: String
+  },
+  {
+    timestamps: true
+  }
+);
+
 UserSchema.methods.validPassword = function(password) {
   return bcrypt.compareSync(password, this.passwordHash);
 };
@@ -27,5 +38,6 @@ UserSchema.virtual("password").set(function(value) {
 
 const Post = mongoose.model("post", PostSchema);
 const User = mongoose.model("user", UserSchema);
+const Comment = mongoose.model("commen t", CommentSchema);
 
-module.exports = { Post, User };
+module.exports = { Post, User, Comment };

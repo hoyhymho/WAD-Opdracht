@@ -62,8 +62,7 @@ input {
 }
 
 .all-posts{
-  padding-left: 15%;
-  padding-right: 15%;
+
 }
 
 .thumbnail{
@@ -227,8 +226,9 @@ input {
 
 .allContainer {
   display: flex;
+  justify-content: space-around;
 }
 
 .user {
-  padding-right: 15%;
+
 }
