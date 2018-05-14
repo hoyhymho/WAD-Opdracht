@@ -4,6 +4,7 @@ import Posts from '../components/Posts';
 import NotFound from '../components/NotFound';
 import PostDetail from '../components/PostDetail';
 import Form from '../components/Form';
+import User from "../components/User";
 import {Switch, Route, Link} from 'react-router-dom';
 import {observer} from "mobx-react";
 
@@ -21,40 +22,43 @@ class App extends Component {
           <Link to="/" className="logo"><h1>myreddit</h1></Link>
         </header>
         
-        <Query query={GET_ALL_POSTS}>
-          {({ loading, error, data: {allPosts} }) => {
-            if (loading) return <p>Loading...</p>;
-            if (error) return <p>error {error.message}</p>;
-            return (
-              <Switch>
-                <Route path="/" exact render={() => 
-                  <Posts posts={allPosts} />
-                }/>
+        <div className="allContainer">
+          <Query query={GET_ALL_POSTS}>
+            {({ loading, error, data: {allPosts} }) => {
+              if (loading) return <p>Loading...</p>;
+              if (error) return <p>error {error.message}</p>;
+              return (
+                <Switch>
+                  <Route path="/" exact render={() => 
+                    <Posts posts={allPosts} />
+                  }/>
 
-                <Route
-                  path="/post/:id"
-                  render={
-                    ({match}) => {
-                      const id = match.params.id;
-                      const post = store.posts.find(check => check.id === id);
-                      return (post) ? <PostDetail 
-                      store={store} id={id} post={post}
-                      /> :<NotFound/>
+                  <Route
+                    path="/post/:id"
+                    render={
+                      ({match}) => {
+                        const id = match.params.id;
+                        const post = store.posts.find(check => check.id === id);
+                        return (post) ? <PostDetail 
+                        store={store} id={id} post={post}
+                        /> :<NotFound/>
+                      }
                     }
-                  }
-                />
+                  />
 
-                <Route 
-                  path="/add"
-                  render={() => <Form posts={allPosts} />}
-                />
+                  <Route 
+                    path="/add"
+                    render={() => <Form posts={allPosts} />}
+                  />
 
-                <Route component={NotFound} />
-              </Switch>
-            );
-          }}
-        </Query>
-        
+                  <Route component={NotFound} />
+                </Switch>
+              );
+            }}
+          </Query>
+          
+          <User />
+        </div>
       </div>
     );
   }

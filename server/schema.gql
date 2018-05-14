@@ -4,10 +4,20 @@ module.exports = `
     title: String
     content: String
     image: String
+    user: User!
+  }
+
+  type User {
+    _id: String
+    name: String
+    email: String!
+    jwt: String
+    posts: [Post]!
   }
 
   type Query {
     allPosts: [Post]
+    allUsers: [User]
   }
 
   type Mutation {
@@ -19,6 +29,15 @@ module.exports = `
     deletePost(
       _id: String!
     ):Post
+    login(
+      email: String!
+      password: String!
+    ):User
+    register(
+      name: String!
+      email: String!
+      password: String!
+    ):User
   }
 `
 
