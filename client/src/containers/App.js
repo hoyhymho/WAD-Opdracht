@@ -15,7 +15,7 @@ import ProtectedRoute from "../components/ProtectedRoute";
 class App extends Component {
 
   render() {
-    const {store} = this.props;
+    // const {store} = this.props;
 
     return (
       <div> 

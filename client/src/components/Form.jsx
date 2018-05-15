@@ -6,16 +6,16 @@ import { Mutation } from "react-apollo";
 import ADD_POST from "../graphql/addPost";
 import GET_POSTS from "../graphql/getAllPosts"
 
-const Form = ({store, posts, history}) => {
+const Form = ({posts, history}) => {
 
     let titleInput = null;
     let contentInput = null;
     let imageInput = null;
 
-    const redirect = (id) => {
-        console.log(history, id);
-        history.push(`/post/${id}`);
-    }
+    // const redirect = (id) => {
+    //     console.log(history, id);
+    //     history.push(`/post/${id}`);
+    // }
     
     return (
         <div className="add-post">

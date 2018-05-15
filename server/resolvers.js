@@ -32,10 +32,10 @@ module.exports = {
   },
   Mutation: {
     addPost(_, args, context) {
-      return getAuthenticatedUser(context).then(user =>{
+      return getAuthenticatedUser(context).then(user => {
         args.user = user.id;
         return new Post(args).save();
-      })
+      });
     },
     addComment(_, args, context) {
       return getAuthenticatedUser(context).then(user => {

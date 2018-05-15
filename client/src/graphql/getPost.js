@@ -7,6 +7,14 @@ export default gql`
       title,
       content,
       image
+      comments {
+        _id
+        message
+        user {
+          name
+        }
+        created: createdAt
+      }
     }
   }
 `;

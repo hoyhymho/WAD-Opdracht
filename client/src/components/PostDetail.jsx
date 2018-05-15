@@ -9,16 +9,6 @@ import GET_POST from "../graphql/getPost";
 
 const PostDetail = ({ id }) => {
 
-  const renderComment = (comment) => {
-    
-    return(
-      <article className="comment" key={comment.created}>
-        <p className="comment-date">{new Date(comment.created).toLocaleTimeString()} -</p>
-        <p>{comment.message}</p>
-      </article>
-    )
-  }
-
   return (
     <Query query={GET_POST} variables={{ id }}>
       {({ data: { post }, loading, error }) => {
@@ -47,7 +37,13 @@ const PostDetail = ({ id }) => {
             <section className="comments">
             <AddComment postId={id} />
             {
-              (post.comments) ? post.comments.map( comment => renderComment(comment) ) : console.log(post)
+              (post.comments) ? 
+                post.comments.map( comment => (
+                  <article className="comment" key={comment.created}>
+                  <p className="comment-date">{new Date(comment.created).toLocaleTimeString()} -</p>
+                  <p>{comment.message}</p>
+                </article>
+                )) : console.log(post)
             }
 
             </section>

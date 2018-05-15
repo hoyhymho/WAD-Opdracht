@@ -18,11 +18,13 @@ const AddComment = ({postId}) => {
       {(addComment, { loading, error }) => (
         <form onSubmit={ e => {
             e.preventDefault();
+            
             if(input.value){
+              console.log(input.value);
               addComment({
                 variables: { post: postId, message: input.value }
               });
-              e.currentTarget.reset();
+              e.currentTarget.reset();           
             }
           }
         } className ="add-comment">

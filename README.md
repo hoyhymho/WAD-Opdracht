@@ -79,3 +79,5 @@ Week 8
 
 Register en login/logout werkt 
 AddPost is een Protected Component 
+
+comments werken en ook kunnen niet toegevoegd worden als je niet bent ingelogd
